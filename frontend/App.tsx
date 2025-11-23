@@ -141,7 +141,7 @@ export default function App() {
             Is it <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Clickbait?</span>
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Use AI to detect sensationalism, exaggerated claims, and emotional manipulation in headlines instantly.
+            Use NLP model to detect exaggerated claims, and emotional manipulation in headlines instantly.
           </p>
         </header>
 
@@ -216,7 +216,7 @@ export default function App() {
                 gradient={analysis.data.clickbait_score > 0.5 ? 'from-rose-500 to-orange-500' : 'from-emerald-500 to-teal-500'}
               />
                <StatCard 
-                title="Emotional Trigger"
+                title="Emotion"
                 value={analysis.data.emotion_prediction}
                 subtext={`Intensity Score: ${(analysis.data.emotion_score * 100).toFixed(1)}%`}
                 icon={FireIcon}
@@ -231,11 +231,11 @@ export default function App() {
               
               <h3 className="text-xl font-bold text-white mb-8 flex items-center">
                 <ChartBarIcon className="w-5 h-5 mr-2 text-indigo-400" />
-                Detailed Metrics
+                Metrics
               </h3>
               
               <ProgressBar 
-                label="Clickbait Probability" 
+                label="Confidence Score" 
                 score={analysis.data.clickbait_score} 
                 colorClass={getColorForScore(analysis.data.clickbait_score)} 
               />
@@ -251,25 +251,6 @@ export default function App() {
                 <div className="mt-8 bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-6 relative overflow-hidden group">
                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
                    
-                   <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                      <div>
-                        <h4 className="text-lg font-bold text-indigo-300 flex items-center">
-                          <SparklesIcon className="w-5 h-5 mr-2 text-indigo-400 animate-pulse" />
-                          Fix with Gemini AI
-                        </h4>
-                        <p className="text-sm text-slate-400 mt-1">
-                          Generate a neutral, factual version of this headline instantly.
-                        </p>
-                      </div>
-                      <button 
-                        onClick={handleRewrite}
-                        disabled={isRewriting}
-                        className="whitespace-nowrap px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 border border-indigo-500/50"
-                      >
-                        {isRewriting ? 'Rewriting...' : 'De-Clickbait Headline'}
-                      </button>
-                   </div>
-
                    {rewrittenHeadline && (
                      <div className="mt-5 p-4 bg-slate-950/50 rounded-lg border border-indigo-500/30 animate-fade-in">
                         <span className="text-[10px] text-indigo-400 uppercase font-bold tracking-widest mb-1 block">AI Suggestion</span>
@@ -281,7 +262,7 @@ export default function App() {
 
               <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center text-xs text-slate-500 font-mono">
                 <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-emerald-500 mr-2"></div> System Online</span>
-                <span>ID: {Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
+                
               </div>
             </div>
           </div>
