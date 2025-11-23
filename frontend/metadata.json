@@ -1,0 +1,5 @@
+{
+  "name": "BaitBuster AI",
+  "description": "A modern, high-performance interface for detecting clickbait headlines using a custom Python backend model, enhanced with Gemini for headline rewriting.",
+  "requestFramePermissions": []
+}
