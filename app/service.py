@@ -97,7 +97,7 @@ def predict_clickbait_and_emotion(text: str) -> dict:
     emotion_score = predictions[1][0][0]
 
     # Decode predictions
-    clickbait_label_numeric = 1 if clickbait_score < 0.5 else 1 # Model predicts 1 for clickbait
+    clickbait_label_numeric = 0 if clickbait_score < 0.5 else 1 # Model predicts 0 for clickbait
     emotion_label_numeric = 1 if emotion_score > 0.5 else 0 # Model predicts 1 for sensational
 
     clickbait_prediction = clickbait_encoder.inverse_transform([clickbait_label_numeric])[0]
