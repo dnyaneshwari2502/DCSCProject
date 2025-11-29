@@ -79,9 +79,11 @@ d. Frontend calls the Google Cloud Run /predict endpoint
 
 
 
-Authors:
-Dnyaneshwari Rakshe
-Jayan Agarwal
+### Authors:
+
+- Dnyaneshwari Rakshe
+
+- Jayan Agarwal
 
 
 
