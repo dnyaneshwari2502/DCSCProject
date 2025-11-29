@@ -3,6 +3,7 @@
 Clickbait is a lightweight NLP application that evaluates news headlines for clickbait likelihood and emotional tone. It uses a trained LSTM model served through a FastAPI backend, with a simple browser-based frontend.
 
 Frontend (Netlify): https://clickabaitproject.netlify.app/
+
 The backend on Google Cloud Run is currently stopped, so predictions will not work until it is restarted.
 
 Features
@@ -29,32 +30,46 @@ Frontend:
 5. Node modules
 
 Steps to Run Backend Locally:
+
 a. Create a virtual environment:
     python -m venv .venv
     .venv\Scripts\activate
+
 b. Install:
     pip install -r requirements.txt
+
 c. Run:
     uvicorn main:app --reload
+
 Backend is available at: http://127.0.0.1:8000/docs
 
 Steps to Run Frontend Locally:
+
 a. Open frontend/index.html in a browser or run a simple server: 
     cd frontend
     python -m http.server 8001
+
 b. Then open: http://localhost:8001
 
 Run Backend Using Docker
-Build image:
+
+a. Build image:
     docker build -t clickbait-backend .
-Run Container:
+
+b. Run Container:
     docker run -p 8080:8080 clickbait-backend
 
 Deployment Summary: 
+
 a. Backend container is pushed to Google Artifact Registry
+
 b. Served via Google Cloud Run
+
 c. Frontend is deployed on Netlify
+
 d. Frontend calls the Google Cloud Run /predict endpoint
+
+
 
 Note: Cloud Run is currently stopped, so the public site cannot fetch predictions.
 
